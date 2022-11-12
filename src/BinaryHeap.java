@@ -70,12 +70,18 @@ public class BinaryHeap {
         }
     }
 
+    /**
+     * time complexity O(log n)
+     */
     public void insert(int element) {
         this.heap[heapSize] = element;
         this.heapSize++;
-        this.siftUp(this.heapSize-1);
+        this.siftUp(this.heapSize - 1);
     }
 
+    /**
+     * time complexity O(1)
+     */
     public Integer getMin() {
         if (this.isEmpty()) {
             return null;
