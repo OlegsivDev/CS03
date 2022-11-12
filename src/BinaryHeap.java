@@ -89,4 +89,6 @@ public class BinaryHeap {
             return this.heap[0];
         }
     }
+
+    // TODO: add methods: extractMin, update, build
 }
