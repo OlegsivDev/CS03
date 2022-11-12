@@ -2,6 +2,7 @@ public class BinaryHeap {
     private int[] heap;
     private int heapSize;
 
+    // this is min-heap (root element is the smallest)
     public BinaryHeap(int capacity) {
         heapSize = 0;
         heap = new int[capacity + 1];
@@ -60,7 +61,7 @@ public class BinaryHeap {
             // swap current element and smallest child
             int temp = heap[i];
             this.heap[i] = this.heap[smallestChildI];
-            this.heap[smallestChildI] = this.heap[i];
+            this.heap[smallestChildI] = temp;
 
             //recalculating current element child's indexes
             i = smallestChildI;
