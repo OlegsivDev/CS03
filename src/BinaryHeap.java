@@ -75,4 +75,12 @@ public class BinaryHeap {
         this.heapSize++;
         this.siftUp(this.heapSize-1);
     }
+
+    public Integer getMin() {
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            return this.heap[0];
+        }
+    }
 }
