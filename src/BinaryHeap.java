@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class BinaryHeap {
     private int[] heap;
     private int heapSize;
@@ -6,8 +8,9 @@ public class BinaryHeap {
     public BinaryHeap(int capacity) {
         heapSize = 0;
         heap = new int[capacity + 1];
-        // ???
-        // Arrays.fill(heap, -1)
+
+        // -1 represents null value in array
+        Arrays.fill(heap, -1);
     }
 
     public boolean isEmpty() {
@@ -96,5 +99,10 @@ public class BinaryHeap {
         }
     }
 
+    public Integer extractMin() {
+        if (this.isEmpty()) {
+            return null;
+        }
+    }
     // TODO: add methods: extractMin, update, build
 }
