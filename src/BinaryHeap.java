@@ -25,6 +25,9 @@ public class BinaryHeap {
     Right child index = 2i + 2
      */
 
+    /**
+     * time complexity O(log n)
+     */
     private void siftUp(int i) {
         int parentI = (i - 1) / 2;
 
@@ -42,6 +45,9 @@ public class BinaryHeap {
         }
     }
 
+    /**
+     * time complexity O(log n)
+     */
     private void siftDown(int i) {
         int leftChildI = 2 * i + 1;
         int rightChildI = 2 * i + 2;
