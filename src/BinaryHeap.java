@@ -103,6 +103,19 @@ public class BinaryHeap {
         if (this.isEmpty()) {
             return null;
         }
+        int rootValue = this.heap[0];
+
+        // swap first and last element
+        int temp = this.heap[0];
+        this.heap[0] = this.heap[heapSize - 1];
+        this.heap[heapSize - 1] = temp;
+
+        // delete last element
+        this.heap[heapSize - 1] = -1;
+        this.heapSize--;
+
+        this.siftDown(0);
+        return rootValue;
     }
-    // TODO: add methods: extractMin, update, build
+    // TODO: add methods: update, build
 }

@@ -10,7 +10,8 @@ public class Main {
         testHeap.insert(2);
         testHeap.insert(5);
         testHeap.insert(6);
-
-        System.out.println(testHeap.getMin());
+        System.out.println(testHeap.extractMin());
+        System.out.println(testHeap.extractMin());
+        System.out.println(testHeap.extractMin());
     }
 }
