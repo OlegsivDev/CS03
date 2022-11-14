@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class BinaryHeap {
-    private int[] heap;
+    protected int[] heap;
     private int heapSize;
 
     // this is min-heap (root element is the smallest)
@@ -150,7 +150,4 @@ public class BinaryHeap {
             }
         }
     }
-
-
-    // TODO: add methods: build
 }

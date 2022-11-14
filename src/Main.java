@@ -16,5 +16,14 @@ public class Main {
         System.out.println(testHeap.extractMin());
         System.out.println(testHeap.extractMin());
 
+        //testing PriorityQueue on binaryHeap
+        PriorityQueueOnBinaryHeap testQueue = new PriorityQueueOnBinaryHeap(10);
+        testQueue.insert(5);
+        testQueue.insert(2);
+        testQueue.insert(3);
+        testQueue.insert(10);
+        testQueue.insert(6);
+        System.out.println(testQueue.extractMin());
+        testQueue.increase(1, 200);
     }
 }
