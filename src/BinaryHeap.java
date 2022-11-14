@@ -82,8 +82,8 @@ public class BinaryHeap {
     /**
      * time complexity O(log n)
      */
-    public void insert(int element) {
-        this.heap[heapSize] = element;
+    public void insert(int elementValue) {
+        this.heap[heapSize] = elementValue;
         this.heapSize++;
         this.siftUp(this.heapSize - 1);
     }
@@ -99,6 +99,9 @@ public class BinaryHeap {
         }
     }
 
+    /**
+     * time complexity O(log n)
+     */
     public Integer extractMin() {
         if (this.isEmpty()) {
             return null;
@@ -114,8 +117,40 @@ public class BinaryHeap {
         this.heap[heapSize - 1] = -1;
         this.heapSize--;
 
+        // fixing tree
         this.siftDown(0);
         return rootValue;
     }
-    // TODO: add methods: update, build
+
+    /**
+     * time complexity O(log n)
+     */
+    public void updateByIndex(int i, int newValue) {
+        // updating value
+        int oldValue = this.heap[i];
+        this.heap[i] = newValue;
+
+        // fixing tree
+        if (newValue < oldValue) {
+            this.siftUp(i);
+        } else
+            this.siftDown(i);
+    }
+
+    /**
+     * time complexity o(n) due to value search
+     */
+    public void updateByValue(int oldValue, int newValue) {
+        // find first appearing value
+        for (int i = 0; i < this.heapSize; i++) {
+            if (this.heap[i] == oldValue) {
+                // updating this value by index method
+                this.updateByIndex(i, newValue);
+                break;
+            }
+        }
+    }
+
+
+    // TODO: add methods: build
 }
