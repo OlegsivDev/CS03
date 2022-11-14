@@ -7,7 +7,7 @@ public class PriorityQueueOnBinaryHeap extends BinaryHeap {
         super.insert(priority);
     }
 
-    public Integer extractMin() {
+    public Integer extractMaxPriorityElement() {
         return super.extractMin();
     }
 

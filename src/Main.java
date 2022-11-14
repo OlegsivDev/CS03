@@ -23,7 +23,7 @@ public class Main {
         testQueue.insert(3);
         testQueue.insert(10);
         testQueue.insert(6);
-        System.out.println(testQueue.extractMin());
+        System.out.println(testQueue.extractMaxPriorityElement());
         testQueue.increase(1, 200);
     }
 }
