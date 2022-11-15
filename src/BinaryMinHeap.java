@@ -1,13 +1,13 @@
 import java.util.Arrays;
 
-public class BinaryHeap {
+public class BinaryMinHeap {
     protected int[] heap;
     private int heapSize;
 
     // this is min-heap (root element is the smallest)
-    public BinaryHeap(int capacity) {
+    public BinaryMinHeap(int capacity) {
         heapSize = 0;
-        heap = new int[capacity + 1];
+        heap = new int[capacity];
 
         // -1 represents null value in array
         Arrays.fill(heap, -1);

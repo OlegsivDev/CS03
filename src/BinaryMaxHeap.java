@@ -3,11 +3,13 @@ import java.util.Arrays;
 public class BinaryMaxHeap {
     protected int[] heap;
     private int heapSize;
+    private final int heapCapacity;
 
     // this is min-heap (root element is the smallest)
     public BinaryMaxHeap(int capacity) {
         heapSize = 0;
-        heap = new int[capacity + 1];
+        heapCapacity = capacity;
+        heap = new int[capacity];
 
         // -1 represents null value in array
         Arrays.fill(heap, -1);
@@ -18,7 +20,7 @@ public class BinaryMaxHeap {
     }
 
     public boolean isFull() {
-        return heapSize == heap.length;
+        return heapSize == this.heapCapacity;
     }
 
     /*
@@ -34,8 +36,8 @@ public class BinaryMaxHeap {
     private void siftUp(int i) {
         int parentI = (i - 1) / 2;
 
-        // sifting while element not become a root or smaller than it's parent
-        while ((i != 0) && (this.heap[i] < this.heap[parentI])) {
+        // sifting while element not become a root or grater than it's parent
+        while ((i != 0) && (this.heap[i] > this.heap[parentI])) {
 
             // swap current element and parent
             int temp = this.heap[i];
@@ -54,26 +56,26 @@ public class BinaryMaxHeap {
     private void siftDown(int i) {
         int leftChildI = 2 * i + 1;
         int rightChildI = 2 * i + 2;
-        int smallestChildI;
+        int biggestChildI;
 
-        // sifting while left or right child exists, and it must be higher than current element
-        while ((leftChildI < heapSize && this.heap[i] > heap[leftChildI])
-                || (rightChildI < heapSize && this.heap[i] > this.heap[rightChildI])) {
+        // sifting while left or right child exists, and it must be lower than current element
+        while ((leftChildI < heapSize && this.heap[i] < heap[leftChildI])
+                || (rightChildI < heapSize && this.heap[i] < this.heap[rightChildI])) {
 
             // find gap or smallest child to put current element
-            if ((rightChildI >= heapSize) || this.heap[leftChildI] < this.heap[rightChildI]) {
-                smallestChildI = leftChildI;
+            if ((rightChildI >= heapSize) || this.heap[leftChildI] > this.heap[rightChildI]) {
+                biggestChildI = leftChildI;
             } else {
-                smallestChildI = rightChildI;
+                biggestChildI = rightChildI;
             }
 
-            // swap current element and smallest child
+            // swap current element and biggest child
             int temp = heap[i];
-            this.heap[i] = this.heap[smallestChildI];
-            this.heap[smallestChildI] = temp;
+            this.heap[i] = this.heap[biggestChildI];
+            this.heap[biggestChildI] = temp;
 
             //recalculating current element child's indexes
-            i = smallestChildI;
+            i = biggestChildI;
             leftChildI = 2 * i + 1;
             rightChildI = 2 * i + 2;
         }
@@ -83,6 +85,9 @@ public class BinaryMaxHeap {
      * time complexity O(log n)
      */
     public void insert(int elementValue) {
+        if (this.isFull()) {
+            throw new IllegalArgumentException("Can't insert element, Heap already full");
+        }
         this.heap[heapSize] = elementValue;
         this.heapSize++;
         this.siftUp(this.heapSize - 1);
@@ -91,7 +96,7 @@ public class BinaryMaxHeap {
     /**
      * time complexity O(1)
      */
-    public Integer getMin() {
+    public Integer getMax() {
         if (this.isEmpty()) {
             return null;
         } else {
@@ -102,7 +107,7 @@ public class BinaryMaxHeap {
     /**
      * time complexity O(log n)
      */
-    public Integer extractMin() {
+    public Integer extractMax() {
         if (this.isEmpty()) {
             return null;
         }
@@ -131,7 +136,7 @@ public class BinaryMaxHeap {
         this.heap[i] = newValue;
 
         // fixing tree
-        if (newValue < oldValue) {
+        if (newValue > oldValue) {
             this.siftUp(i);
         } else
             this.siftDown(i);

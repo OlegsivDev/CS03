@@ -1,4 +1,4 @@
-public class PriorityQueueOnBinaryHeap extends BinaryHeap {
+public class PriorityQueueOnBinaryHeap extends BinaryMaxHeap {
     public PriorityQueueOnBinaryHeap(int capacity) {
         super(capacity);
     }
@@ -8,7 +8,7 @@ public class PriorityQueueOnBinaryHeap extends BinaryHeap {
     }
 
     public Integer extractMaxPriorityElement() {
-        return super.extractMin();
+        return super.extractMax();
     }
 
     public void increase(int index, int factor) {
