@@ -5,7 +5,7 @@ public class BinaryMaxHeap {
     private int heapSize;
     private final int heapCapacity;
 
-    // this is min-heap (root element is the smallest)
+    // this is max-heap (root element is the smallest)
     public BinaryMaxHeap(int capacity) {
         heapSize = 0;
         heapCapacity = capacity;
