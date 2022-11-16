@@ -77,4 +77,16 @@ public class PriorityArray {
         }
         this.increasePriorityByIndex(valueIndex, factor);
     }
+
+    public int extractMax() {
+        int result = this.queue[0];
+
+        int [] copiedArray = Arrays.copyOfRange(this.queue, 1, this.queueCapacity);
+        for (int i = 0; i < queueCapacity-1; i++) {
+            this.queue[i] = copiedArray[i];
+        }
+        this.queue[this.queueCapacity-1] = -1;
+
+        return result;
+    }
 }

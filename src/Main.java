@@ -35,5 +35,6 @@ public class Main {
         testArr.updatePriorityByIndex(0,50);
         testArr.increasePriorityByIndex(1, 150);
         testArr.increasePriorityByValue(1, 423);
+        System.out.println(testArr.extractMax());
     }
 }
