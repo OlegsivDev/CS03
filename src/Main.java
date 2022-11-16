@@ -26,15 +26,29 @@ public class Main {
 //        System.out.println(testQueue.extractMaxPriorityElement());
 //        testQueue.increase(1, 200);
 
-        PriorityArray testArr = new PriorityArray(5);
-        testArr.insert(5);
-        testArr.insert(6);
-        testArr.insert(1);
-        testArr.insert(8);
-        testArr.insert(15);
-        testArr.updatePriorityByIndex(0,50);
-        testArr.increasePriorityByIndex(1, 150);
-        testArr.increasePriorityByValue(1, 423);
-        System.out.println(testArr.extractMax());
+//        PriorityArray testArr = new PriorityArray(5);
+//        testArr.insert(5);
+//        testArr.insert(6);
+//        testArr.insert(1);
+//        testArr.insert(8);
+//        testArr.insert(15);
+//        testArr.updatePriorityByIndex(0,50);
+//        testArr.increasePriorityByIndex(1, 150);
+//        testArr.increasePriorityByValue(1, 423);
+//        System.out.println(testArr.extractMax());
+
+        PriorityList testList = new PriorityList();
+
+        testList.insert(6);
+        testList.insert(4);
+        testList.insert(9);
+        testList.insert(2);
+        testList.insert(8);
+        testList.insert(3);
+        testList.increasePriorityByIndex(2, 100);
+        testList.increasePriorityByValue(4,150);
+        testList.extractMax();
+        testList.extractMax();
+        testList.extractMax();
     }
 }

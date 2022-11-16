@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Collections;
 
 public class PriorityArray {
     protected int[] queue;
@@ -22,6 +21,9 @@ public class PriorityArray {
         return queueSize == queueCapacity;
     }
 
+    /**
+     * time complexity O(n)
+     */
     public void insert(int value) {
         if (isFull()) {
             throw new IllegalArgumentException("Can't insert element, PriorityArray already full");
@@ -32,6 +34,7 @@ public class PriorityArray {
         } else if (value < minValue) {
             this.queue[queueSize] = value;
             this.queueSize++;
+            this.minValue = value;
             return;
         } else {
             int moveFromIndex = 0;
@@ -49,19 +52,22 @@ public class PriorityArray {
                 moveIndex++;
             }
             this.queueSize++;
-            if (value < this.minValue) {
-                this.minValue = value;
-            }
         }
     }
+
+    /**
+     * time complexity O(n log n) due to sorting,
+     * but it can be O(n) with proper optimization
+     */
     public void updatePriorityByIndex(int index, int newPriority) {
         this.queue[index] = newPriority;
         Arrays.sort(this.queue);
         int[] copiedArray = Arrays.copyOf(queue, queueCapacity);
-        for (int i = this.queueCapacity-1, g = 0; i >= 0; i--, g++) {
+        for (int i = this.queueCapacity - 1, g = 0; i >= 0; i--, g++) {
             this.queue[g] = copiedArray[i];
         }
     }
+
     public void increasePriorityByIndex(int index, int factor) {
         int oldPriority = this.queue[index];
         this.updatePriorityByIndex(index, oldPriority + factor);
@@ -78,14 +84,17 @@ public class PriorityArray {
         this.increasePriorityByIndex(valueIndex, factor);
     }
 
+    /**
+     * time complexity O(n)
+     */
     public int extractMax() {
         int result = this.queue[0];
 
-        int [] copiedArray = Arrays.copyOfRange(this.queue, 1, this.queueCapacity);
-        for (int i = 0; i < queueCapacity-1; i++) {
+        int[] copiedArray = Arrays.copyOfRange(this.queue, 1, this.queueCapacity);
+        for (int i = 0; i < queueCapacity - 1; i++) {
             this.queue[i] = copiedArray[i];
         }
-        this.queue[this.queueCapacity-1] = -1;
+        this.queue[this.queueCapacity - 1] = -1;
 
         return result;
     }
